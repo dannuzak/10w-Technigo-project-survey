@@ -11,7 +11,6 @@ const Form = () => {
 
 //STATES
 
-
 const [name, setName] = useState('')
 const [country, setCountry] = useState('')
 const [companion, setCompanion] = useState('')
@@ -19,11 +18,13 @@ const [activity, setActivity] = useState('')
 const [summary, setSummary]= useState(false) 
 
 
+
 //ARRAYS
 
 const countries = ['France', 'Thailand', 'Iceland', 'Australia', 'Peru']
 const activities = [' make a gastronomy tour', ' explore the cultural scene', ' hangout with the locals',' party till sunrise']
-   
+  
+
 
   //FUNCTIONS 
 
@@ -52,6 +53,7 @@ const activities = [' make a gastronomy tour', ' explore the cultural scene', ' 
     setActivity(e.target.value);
   }
 
+
   // FORM & QUESTIONS
 
   return (
@@ -59,79 +61,82 @@ const activities = [' make a gastronomy tour', ' explore the cultural scene', ' 
       <main className='main-container'>
         <div className='section-container'>
 
-      {!summary && ( 
+          {!summary && ( 
 
-        <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
 
-          <section className='intro'>
-            <Intro />
-          </section>
-          <section className='name-section'> 
-            <NameInputText
-              question={'1. What is your name?'}
-              nameValue={name} 
-              onNameChangeFunction={onNameChange}
-            />
-          </section> 
-        
-          <section className='country-section'>
-            <legend tabIndex="0"><h1>2. Choose a country for your next adventure:</h1></legend>
-            {countries.map((country) => 
-              <CountryInputRadioButton
-                key={country} 
-                countryValue={country}
-                onCountryChangeFunction={onCountryChange}
-              />
-            )}
-          </section>
+              <section className='intro'>
+                <Intro />
+              </section>
+              <section className='name-section'> 
+                <NameInputText
+                  question={'1. What is your name?'}
+                  nameValue={name} 
+                  onNameChangeFunction={onNameChange}
+                />
+              </section> 
+            
+              <section className='country-section'>
+                <legend tabIndex="0"><h1>2. Choose a country for your next adventure:</h1></legend>
+                {countries.map((country) => 
+                  <CountryInputRadioButton
+                    key={country} 
+                    countryValue={country}
+                    onCountryChangeFunction={onCountryChange}
+                  />
+                )}
+              </section>
 
-          <section className='companion-section'>
-            <CompanionDropDown
-            question={'3. Who are you taking with you on this trip?'}
-            dropDownvalue = {companion}
-            onCompanionChangeFunction = {onCompanionChange}
-            />
-          </section>
-                
-          <section className="activity-section">
-          <legend tabIndex="0"><h1>4. What's the main activity you are looking forward to?</h1></legend>
-            {activities.map((activity) =>
-              <ActivityInputRadioButton
-                key={activity} 
-                activityValue={activity}
-                onActivityChangeFunction = {onActivityChange} 
-              />
-            )}
-            <div className="button-section"> 
-              <button 
-                onSubmit= {handleSubmit}
-                type="submit"
-                className='circleScaleBtn'
+              <section className='companion-section'>
+                <CompanionDropDown
+                question={'3. Who are you taking with you on this trip?'}
+                dropDownvalue = {companion}
+                onCompanionChangeFunction = {onCompanionChange}
+                />
+              </section>
+                    
+              <section className="activity-section">
+              <legend tabIndex="0"><h1>4. What's the main activity you are looking forward to?</h1></legend>
+                {activities.map((activity) =>
+                  <ActivityInputRadioButton
+                    key={activity} 
+                    activityValue={activity}
+                    onActivityChangeFunction = {onActivityChange} 
+                  />
+                )}
+                <div className="button-section"> 
+                  <button 
+                    onSubmit= {handleSubmit}
+                    type="submit"
+                    className='circleScaleBtn'
+                  >
+                    <span>Submit</span>
+                  </button>
+                </div>  
+              </section>
 
-              ><span>Submit</span></button>
-            </div>  
-          </section>
-        </form> 
+            </form> 
 
-      )} 
+          )} 
       
-      {( 
-        <>
-          {summary && 
-            <section className="summary-section">
-              <Summary
-                nameValue={name}
-                countryValue={country}
-                companionValue={companion}
-                activityValue={activity}
-              />
-              <img src="/assets/packing.png" alt="suitcase being packed"/>
-            </section>
-          }
-        </>
-      )}
-      </div>
-    </main> 
+          {( 
+            <>
+              {summary && 
+                <section className="summary-section">
+                  <Summary
+                    nameValue={name}
+                    countryValue={country}
+                    companionValue={companion}
+                    activityValue={activity}
+                  />
+                  <img src="/assets/packing.png" alt="suitcase being packed"/>
+                </section>
+              }
+            </>
+          )}
+
+        </div>
+      </main> 
 
     </> 
   
