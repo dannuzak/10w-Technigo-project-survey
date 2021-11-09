@@ -1,9 +1,7 @@
 import React from 'react'
 
-const CompanionDropDown = ( { question, dropDownvalue, onCompanionChangeFunction }) => {
-    
+const CompanionDropDown = ( { question, dropDownvalue, onCompanionChangeFunction }) => {  
   return (
-
     <div>
       <label htmlFor="companion" className="question">{question}</label>
       <select
